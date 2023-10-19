@@ -12,4 +12,16 @@ class Empleado
 
         return $data;
     }
+
+    public static function create($data)
+    {
+        extract($data);
+        $queryString = "insert into empleados(nombre, sueldo, area_id) values ('$nombre', '$sueldo', '$area_id')";
+
+        $res = DB::query($queryString);
+
+        if ($res) {
+            return true;
+        }
+    }
 }
