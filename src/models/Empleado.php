@@ -24,4 +24,13 @@ class Empleado
             return true;
         }
     }
+
+    public static function delete($id)
+    {
+        $res = DB::query("delete from empleados where id = $id");
+
+        if ($res) {
+            return true;
+        }
+    }
 }

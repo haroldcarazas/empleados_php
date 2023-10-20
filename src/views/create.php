@@ -8,7 +8,7 @@
 <body>
     <h1>Crear registro de empleado</h1>
 
-    <form action="/" method="post">
+    <form action="/create" method="post">
         <label for="">Nombre:</label>
         <input type="text" name="nombre">
         <br>
@@ -17,7 +17,7 @@
         <input type="text" name="sueldo">
         <br>
 
-        <label for="">Nombre:</label>
+        <label for="">Área:</label>
         <select name="area_id">
             <option value="1">Informática</option>
             <option value="2">Logística</option>

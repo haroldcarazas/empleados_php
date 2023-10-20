@@ -25,4 +25,18 @@ class EmpleadoController
             header("Location: /index.php");
         }
     }
+
+    public function delete($id)
+    {
+        $deleted = Empleado::delete($id);
+
+        if ($deleted) {
+            header("Location: /index.php");
+        }
+    }
+
+    public function edit($id)
+    {
+        echo "Editando los datos: $id";
+    }
 }
