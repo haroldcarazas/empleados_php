@@ -1,8 +1,10 @@
 <?php
 require_once($_SERVER["DOCUMENT_ROOT"] . "/src/models/Empleado.php");
+require_once($_SERVER["DOCUMENT_ROOT"] . "/src/models/Area.php");
 
 class EmpleadoController
 {
+    // Mostrar la vista principal
     public function index()
     {
         $empleados = Empleado::all();
@@ -16,7 +18,7 @@ class EmpleadoController
         include $_SERVER["DOCUMENT_ROOT"] . "/src/views/create.php";
     }
 
-    // Crear el registro en la base de datos
+    // Crear un nuevo registro en la base de datos
     public function store($request)
     {
         $created = Empleado::create($request);
@@ -26,7 +28,8 @@ class EmpleadoController
         }
     }
 
-    public function delete($id)
+    // Eliminar un empleado
+    public function destroy($id)
     {
         $deleted = Empleado::delete($id);
 
@@ -35,8 +38,22 @@ class EmpleadoController
         }
     }
 
+    // Mostrar el formulario para editar un registro de empleado
     public function edit($id)
     {
-        echo "Editando los datos: $id";
+        $empleado = Empleado::find($id);
+        $areas = Area::all();
+
+        include $_SERVER["DOCUMENT_ROOT"] . "/src/views/edit.php";
+    }
+
+    // Actualizar los datos de un empleado en la base de datos
+    public function update($request)
+    {
+        $updated = Empleado::update($request);
+
+        if ($updated) {
+            header("Location: /index.php");
+        }
     }
 }
